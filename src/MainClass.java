@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.function.Function;
@@ -67,7 +68,34 @@ public class MainClass {
                 = stream.dropWhile(number -> (number / 4 == 1))
                 .collect(Collectors.toList());
 
-        System.out.println(list);
+        //System.out.println(list);
+
+        //stream empty
+        Stream<String> stringStream  = Stream.empty();
+
+        //flatMap
+        //Stream flatMap make multiple layer of streams into one layer
+        // Creating a List of Strings
+        List<Integer> primeNumbers = Arrays.asList(2,3,5,7,11,13,17,19);
+        List<Integer> oddNumbers = Arrays.asList(1,3,5,7,9,11,13,15,17,19);
+        List<Integer> evenNumbers = Arrays.asList(2,4,6,8,10,12,14,16,18,20);
+        List<List<Integer>> listsOfLists = Arrays.asList(primeNumbers,oddNumbers,evenNumbers);
+        System.out.println(listsOfLists);
+
+        List<Integer> map = primeNumbers.
+                stream().
+                map(singleList -> singleList*2).
+                collect(Collectors.toList());
+        System.out.println("map: "+map);
+
+        List<Integer> flatMap =     listsOfLists.stream().
+                flatMap(singleList -> singleList.stream()).
+                collect(Collectors.toList());
+        System.out.println("flatMap: "+flatMap);
+
+        // flatMap vs map
+        // flatMap can works on multiple layer of lists i.e.  [[2, 3], [1, 3, 5], [2, 4]]
+        // but map can works on only a single layer of list i.e. [2, 3]
 
         
 
