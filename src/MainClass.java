@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -71,24 +68,24 @@ public class MainClass {
         //System.out.println(list);
 
         //stream empty
-        Stream<String> stringStream  = Stream.empty();
+        Stream<String> stringStream = Stream.empty();
 
         //flatMap
         //Stream flatMap make multiple layer of streams into one layer
         // Creating a List of Strings
-        List<Integer> primeNumbers = Arrays.asList(2,3,5,7,11,13,17,19);
-        List<Integer> oddNumbers = Arrays.asList(1,3,5,7,9,11,13,15,17,19);
-        List<Integer> evenNumbers = Arrays.asList(2,4,6,8,10,12,14,16,18,20);
-        List<List<Integer>> listsOfLists = Arrays.asList(primeNumbers,oddNumbers,evenNumbers);
+        List<Integer> primeNumbers = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19);
+        List<Integer> oddNumbers = Arrays.asList(1, 3, 5, 7, 9, 11, 13, 15, 17, 19);
+        List<Integer> evenNumbers = Arrays.asList(2, 4, 6, 8, 10, 12, 14, 16, 18, 20);
+        List<List<Integer>> listsOfLists = Arrays.asList(primeNumbers, oddNumbers, evenNumbers);
         //System.out.println(listsOfLists);
 
         List<Integer> map = primeNumbers.
                 stream().
-                map(singleList -> singleList*2).
+                map(singleList -> singleList * 2).
                 collect(Collectors.toList());
         //System.out.println("map: "+map);
 
-        List<Integer> flatMap =     listsOfLists.stream().
+        List<Integer> flatMap = listsOfLists.stream().
                 flatMap(singleList -> singleList.stream()).
                 collect(Collectors.toList());
         //System.out.println("flatMap: "+flatMap);
@@ -100,7 +97,17 @@ public class MainClass {
         // flatMap not only works on list of list but also Optional of Optional i.e. Optional<Optional<obj>>
         // which makes it Optional<obj>
 
-        
+        //forEach
+
+        // Creating a Stream of Strings
+        Stream<String> stream2 = Stream.of("GFG", "Geeks",
+                "for", "GeeksforGeeks");
+
+        // Using forEach(Consumer action) to print
+        // Character at index 1 in reverse order
+        stream2.sorted(Comparator.reverseOrder())
+                .flatMap(str -> Stream.of(str.charAt(1)))
+                .forEach(System.out::println);
 
 
     }
