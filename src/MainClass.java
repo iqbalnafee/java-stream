@@ -80,22 +80,25 @@ public class MainClass {
         List<Integer> oddNumbers = Arrays.asList(1,3,5,7,9,11,13,15,17,19);
         List<Integer> evenNumbers = Arrays.asList(2,4,6,8,10,12,14,16,18,20);
         List<List<Integer>> listsOfLists = Arrays.asList(primeNumbers,oddNumbers,evenNumbers);
-        System.out.println(listsOfLists);
+        //System.out.println(listsOfLists);
 
         List<Integer> map = primeNumbers.
                 stream().
                 map(singleList -> singleList*2).
                 collect(Collectors.toList());
-        System.out.println("map: "+map);
+        //System.out.println("map: "+map);
 
         List<Integer> flatMap =     listsOfLists.stream().
                 flatMap(singleList -> singleList.stream()).
                 collect(Collectors.toList());
-        System.out.println("flatMap: "+flatMap);
+        //System.out.println("flatMap: "+flatMap);
 
         // flatMap vs map
         // flatMap can works on multiple layer of lists i.e.  [[2, 3], [1, 3, 5], [2, 4]]
         // but map can works on only a single layer of list i.e. [2, 3]
+
+        // flatMap not only works on list of list but also Optional of Optional i.e. Optional<Optional<obj>>
+        // which makes it Optional<obj>
 
         
 
