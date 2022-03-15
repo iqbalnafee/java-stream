@@ -107,9 +107,18 @@ public class MainClass {
         // Character at index 1 in reverse order
         stream2.sorted(Comparator.reverseOrder())
                 .flatMap(str -> Stream.of(str.charAt(1)))
-                .forEach(System.out::println);
+                ;
 
+        //stream generate
 
+        Stream.generate(Math::random).limit(5).forEach(System.out::println);
+        // generate requires a supplier. Suppliers are useful when we don’t need to supply any value
+        // and obtain a result at the same time, i.e. Supplier<Double> randomValue = () -> Math.random();
+
+    }
+
+    public static int func(int var){
+      return var*2;
     }
 
 }
