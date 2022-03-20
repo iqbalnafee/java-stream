@@ -107,18 +107,35 @@ public class MainClass {
         // Character at index 1 in reverse order
         stream2.sorted(Comparator.reverseOrder())
                 .flatMap(str -> Stream.of(str.charAt(1)))
-                ;
+        ;
 
-        //stream generate
+        /*
+        stream generate
 
-        Stream.generate(Math::random).limit(5).forEach(System.out::println);
-        // generate requires a supplier. Suppliers are useful when we don’t need to supply any value
-        // and obtain a result at the same time, i.e. Supplier<Double> randomValue = () -> Math.random();
+         generate requires a supplier. Suppliers are useful when we don’t need to supply any value
+         and obtain a result at the same time, i.e. Supplier<Double> randomValue = () -> Math.random();
+        */
+
+        //Stream.generate(Math::random).limit(5).forEach(System.out::println);
+
+
+        //stream iterate
+
+        //        static <T> Stream<T> iterate(T seed,
+        //                Predicate<T> hasNext,
+        //                UnaryOperator<T> next)
+
+        // seed: which is the initial element,
+        // hasNext: which is a predicate to apply to elements to determine when the stream must terminate and
+        // next: which is a function to be applied to the previous element to produce a new element.
+
+        Stream<Integer> stream1 = Stream.iterate(100, i -> i < 2000, i -> i * 10);
+        stream1.forEach(System.out::println);
 
     }
 
-    public static int func(int var){
-      return var*2;
+    public static int func(int var) {
+        return var * 2;
     }
 
 }
